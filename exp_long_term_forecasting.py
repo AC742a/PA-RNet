@@ -208,7 +208,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                                                                cache_dir=cache_path)
             elif configs.llm_model == 'GPT2':
                 self.gpt2_config = GPT2Config.from_pretrained('openai-community/gpt2',
-                                                              cache_dir='E:\\drive\\wallace_sz\\models')
+                                                              cache_dir='')
 
                 self.gpt2_config.num_hidden_layers = configs.llm_layers
                 self.gpt2_config.output_attentions = True
@@ -219,7 +219,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         trust_remote_code=True,
                         local_files_only=True,
                         config=self.gpt2_config,
-                        cache_dir='E:\\drive\\wallace_sz\\models'
+                        cache_dir=''
                     )
                 except:  # downloads model from HF is not already done
                     print("Local model files not found. Attempting to download...")
@@ -348,7 +348,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     )
             elif configs.llm_model == 'BERT':
                 self.bert_config = BertConfig.from_pretrained('google-bert/bert-base-uncased',
-                                                              cache_dir='E:\\drive\\wallace_sz\\models')
+                                                              cache_dir='')
 
                 self.bert_config.num_hidden_layers = configs.llm_layers
                 self.bert_config.output_attentions = True
@@ -359,7 +359,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         trust_remote_code=True,
                         local_files_only=True,
                         config=self.bert_config,
-                        cache_dir='E:\\drive\\wallace_sz\\models'
+                        cache_dir=''
                     )
                 # except EnvironmentError:  # downloads model from HF is not already done
                 except:  # downloads model from HF is not already done
@@ -369,7 +369,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         trust_remote_code=True,
                         local_files_only=False,
                         config=self.bert_config,
-                        cache_dir='E:\\drive\\wallace_sz\\models'
+                        cache_dir=''
                     )
 
                 try:
@@ -860,5 +860,6 @@ class Exp_Long_Term_Forecast(Exp_Basic):
         torch.cuda.empty_cache()
         gc.collect()
         return mse
+
 
 
